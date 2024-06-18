@@ -1,9 +1,9 @@
-const Item = ({item}) => {
+const Item = ({item, id}) => {
   return (
     <>
-      <li>
+      <li key={id}>
         <input type="checkbox"/>
-        <span style={item.packed ? {textDecoration: 'line-through'} : {}}> 
+        <span style={item.packed ? {textDecoration: 'line-through'} : {}} key={id}> 
           {`${item.quantity} ${item.description}`} 
          </span>
         <button style={{backgroundColor: "transparent"}}>❌</button>
