@@ -20,7 +20,6 @@ const Form = ({AddItems}) => {
       packed: false,
       id: Date.now(),
     };
-    console.log('added item: ', newItem);
     
     AddItems(newItem);
 

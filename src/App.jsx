@@ -11,23 +11,24 @@ export default function App() {
   
   function AddItems (item) {
     setItems((prev) => [...prev, item]);
-  console.log('Items: ', items);
   }
   
-  function DeleteItem (id) {
-    console.log("ID: ", id);
+  function handleDeleteItem (id) {
     const newItems = items.filter((item) => item.id !== id)
-    console.log("Reach app component.");
-    console.log(newItems);
     setItems(newItems);
+  }
+
+  
+  function handleToggleItem(id) {
+    setItems((prev) => items.map((item) => item.id === id ? {...item, packed: !item.packed} : item ));
   }
 
   return (
     <div className="App">
       <Logo />
       <Form AddItems={AddItems} />
-      <PackagingList items={items} DeleteItem={DeleteItem}/>
-      <Stats />
+      <PackagingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
+      <Stats items={items}/>
     </div>
   );
 }

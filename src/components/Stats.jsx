@@ -1,7 +1,9 @@
-const Stats = () => {
+const Stats = ({items}) => {
+  let packedItems = items.filter((item) => item.packed !== false).length;
+  let packedItemsPercentage = (packedItems / items.length) * 100; 
   return (
     <footer className="stats">
-      <em>You have X items on your list, and you already packed X (x%)</em>
+      <em>You have {items.length} items on your list, and you already packed {packedItems} ({packedItemsPercentage}%).</em>
     </footer>
   );
 }

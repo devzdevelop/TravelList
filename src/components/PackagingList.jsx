@@ -5,14 +5,14 @@ import Item from "./Item"
 //  { id: 3, description: "Suit", quantity: 12, packed: true },
 //];
 
-const PackagingList = ({items, DeleteItem}) => {
+const PackagingList = ({items, onDeleteItem, onToggleItem}) => {
   
   return (
       <div className="list">
         <ul>
           {items.map((item) => 
             <>
-              <Item item={item} key={item.id} id={item.id} DeleteItem={DeleteItem}/>
+              <Item item={item} key={item.id} id={item.id} onDeleteItem={onDeleteItem} onToggleItem={onToggleItem}/>
             </>
           )}
         </ul>
