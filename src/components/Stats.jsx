@@ -3,7 +3,10 @@ const Stats = ({items}) => {
   let packedItemsPercentage = (packedItems / items.length || 0) * 100; 
   return (
     <footer className="stats">
-      <em>You have {items.length} items on your list, and you already packed {packedItems} ({packedItemsPercentage}%).</em>
+      {items.length < 1 
+      ? <em>Starting adding some items to your packaging list 🚀</em> 
+      : <em>You have {items.length} items on your list, and you already packed {packedItems} ({packedItemsPercentage}%).
+      </em>}
     </footer>
   );
 }

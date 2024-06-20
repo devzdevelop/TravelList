@@ -6,7 +6,7 @@ import {useState} from 'react';
 //  { id: 3, description: "Suit", quantity: 12, packed: true },
 //];
 
-const PackagingList = ({items, onDeleteItem, onToggleItem}) => {
+const PackagingList = ({items, onDeleteItem, onToggleItem, onClearList}) => {
   const [sortBy, setSortBy] = useState("input");
   
   let sortedItems;
@@ -14,6 +14,7 @@ const PackagingList = ({items, onDeleteItem, onToggleItem}) => {
   if(sortBy === 'input') sortedItems = items;
   if(sortBy === 'description') sortedItems = items.slice().sort((a, b) => a.description.localeCompare(b.description));
   if(sortBy === 'packed') sortedItems = items.slice().sort((a, b) => Number(a.packed) - Number(b.packed))
+  
   return (
       <div className="list">
         <ul>
@@ -29,6 +30,7 @@ const PackagingList = ({items, onDeleteItem, onToggleItem}) => {
           <option value="description">Sort by Description</option>
           <option value="packed">Sort by Packed Status</option>
         </select>
+        <button onClick={onClearList}>Clear List</button>
       </div>
       </div>
   );

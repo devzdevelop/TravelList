@@ -23,11 +23,15 @@ export default function App() {
     setItems((prev) => items.map((item) => item.id === id ? {...item, packed: !item.packed} : item ));
   }
 
+  function handleClearList() {
+    setItems([]);
+   }
+
   return (
     <div className="App">
       <Logo />
       <Form AddItems={AddItems} />
-      <PackagingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
+      <PackagingList items={items} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} onClearList={handleClearList}/>
       <Stats items={items}/>
     </div>
   );
